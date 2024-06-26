@@ -41,4 +41,23 @@ public class MenuPrincipal {
             }
         }
     }
+
+    private static void organizarCartas() {
+        System.out.println("=== Organização de Cartas ===");
+
+        System.out.print("Filtrar por (raridade, tipo, poder, vida, custoDeMana): ");
+        String criterio = Console.lerString();
+
+        System.out.print("Valor: ");
+        String valorFiltro = Console.lerString();
+
+        List<Carta> cartasFiltradas = colecao.filtrarCartas(criterio, valorFiltro);
+
+        if (!cartasFiltradas.isEmpty()) {
+            System.out.println("Cartas filtradas:");
+            cartasFiltradas.forEach(System.out::println);
+        } else {
+            System.out.println("Nenhuma carta encontrada com o filtro especificado.");
+        }
+    }
 }
