@@ -32,7 +32,15 @@ public class Deck {
         return cartas.stream().filter(c -> c.getTitulo().equals(carta.getTitulo())).count();
     }
 
-
+    public int getQuantidadeCarta(Carta carta) {
+        int count = 0;
+        for (Carta c : cartas) {
+            if (c.equals(carta)) {
+                count++;
+            }
+        }
+        return count;
+    }
 
     @Override
     public String toString() {
