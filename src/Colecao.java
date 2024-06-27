@@ -5,9 +5,17 @@ import java.util.stream.Collectors;
 
 public class Colecao {
     private List<Carta> cartas;
+ feature/criar-continuar-deck
+    private List<Deck> decks;
 
     public Colecao() {
         this.cartas = new ArrayList<>();
+        decks = new ArrayList<>();
+
+
+    public Colecao() {
+        this.cartas = new ArrayList<>();
+main
     }
 
     public boolean adicionarCartaNaColecao(Carta carta) {
@@ -54,4 +62,28 @@ public class Colecao {
         }
     }
 
+  feature/criar-continuar-deck
+    public boolean adicionarDeck(Deck deck) {
+        decks.add(deck);
+        return true;
+    }
+
+    public Deck buscarDeckPorNome(String nome) {
+        for (Deck deck : decks) {
+            if (deck.toString().trim().equalsIgnoreCase(nome.trim())) {
+                return deck;
+            }
+        }
+        return null;
+    }
+
+    public Carta buscarCartaPorTitulo(String titulo) {
+        return cartas.stream().filter(c -> c.getTitulo().equalsIgnoreCase(titulo)).findFirst().orElse(null);
+    }
+
+    public List<Deck> listarDecksIncompletos() {
+        return decks.stream().filter(deck -> !deck.isCompleto()).collect(Collectors.toList());
+    }
+
+main
 }
