@@ -6,17 +6,11 @@ import java.util.stream.Collectors;
 
 public class Colecao {
     private List<Carta> cartas;
- feature/criar-continuar-deck
     private List<Deck> decks;
 
     public Colecao() {
         this.cartas = new ArrayList<>();
         decks = new ArrayList<>();
-
-
-    public Colecao() {
-        this.cartas = new ArrayList<>();
-main
     }
 
     public boolean adicionarCartaNaColecao(Carta carta) {
@@ -63,7 +57,6 @@ main
         }
     }
 
-  feature/criar-continuar-deck
     public boolean adicionarDeck(Deck deck) {
         decks.add(deck);
         return true;
@@ -86,7 +79,6 @@ main
         return decks.stream().filter(deck -> !deck.isCompleto()).collect(Collectors.toList());
     }
 
-
     public Deck criarDeckAleatorio(String nomeDeck) {
         Deck deck = new Deck(nomeDeck);
         List<Carta> cartasDisponiveis = new ArrayList<>(cartas);
@@ -107,4 +99,24 @@ main
         decks.add(deck);
         return deck;
     }
+
+    public void exibirEstatisticas() {
+        long totalCartas = cartas.size();
+        long comum = cartas.stream().filter(c -> c.getRaridade().equalsIgnoreCase("comum")).count();
+        long incomum = cartas.stream().filter(c -> c.getRaridade().equalsIgnoreCase("incomum")).count();
+        long rara = cartas.stream().filter(c -> c.getRaridade().equalsIgnoreCase("rara")).count();
+        long mitica = cartas.stream().filter(c -> c.getRaridade().equalsIgnoreCase("mitica")).count();
+    
+        double poderMedio = cartas.stream().mapToInt(Carta::getPoder).average().orElse(0);
+        double vidaMedia = cartas.stream().mapToInt(Carta::getVida).average().orElse(0);
+    
+        System.out.println("Total de Cartas: " + totalCartas);
+        System.out.println("Comum: " + comum);
+        System.out.println("Incomum: " + incomum);
+        System.out.println("Rara: " + rara);
+        System.out.println("Mítica: " + mitica);
+        System.out.println("Poder Médio: " + poderMedio);
+        System.out.println("Vida Média: " + vidaMedia);
+    }
+
 }

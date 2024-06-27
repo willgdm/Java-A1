@@ -42,6 +42,10 @@ public class Deck {
         return count;
     }
 
+    public List<Carta> getCartas() {
+        return cartas;
+    }
+
     @Override
     public String toString() {
         return nome;
