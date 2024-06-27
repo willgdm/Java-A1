@@ -5,11 +5,17 @@ import java.util.stream.Collectors;
 
 public class Colecao {
     private List<Carta> cartas;
+ feature/criar-continuar-deck
     private List<Deck> decks;
 
     public Colecao() {
         this.cartas = new ArrayList<>();
         decks = new ArrayList<>();
+
+
+    public Colecao() {
+        this.cartas = new ArrayList<>();
+main
     }
 
     public boolean adicionarCartaNaColecao(Carta carta) {
@@ -56,6 +62,7 @@ public class Colecao {
         }
     }
 
+  feature/criar-continuar-deck
     public boolean adicionarDeck(Deck deck) {
         decks.add(deck);
         return true;
@@ -78,4 +85,5 @@ public class Colecao {
         return decks.stream().filter(deck -> !deck.isCompleto()).collect(Collectors.toList());
     }
 
+main
 }
