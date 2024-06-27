@@ -127,4 +127,21 @@ public class MenuPrincipal {
         }
  main
     }
+
+    private static void criarDeckAleatorio() {
+        System.out.println("=== Criação de Deck Aleatório ===");
+        System.out.print("Nome do Deck: ");
+        String nome = Console.lerString();
+
+        Deck deck = colecao.criarDeckAleatorio(nome);
+
+        System.out.println("Deck aleatório criado com sucesso:");
+
+        if (deck.isCompleto()) {
+            System.out.println("Deck completo:");
+        } else {
+            System.out.println("Deck incompleto:");
+        }
+        System.out.println(deck);
+    }
 }

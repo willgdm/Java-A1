@@ -1,5 +1,6 @@
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -85,5 +86,25 @@ main
         return decks.stream().filter(deck -> !deck.isCompleto()).collect(Collectors.toList());
     }
 
-main
+
+    public Deck criarDeckAleatorio(String nomeDeck) {
+        Deck deck = new Deck(nomeDeck);
+        List<Carta> cartasDisponiveis = new ArrayList<>(cartas);
+
+        Collections.shuffle(cartasDisponiveis);
+
+        for (Carta carta : cartasDisponiveis) {
+            int quantidadeNoDeck = deck.getQuantidadeCarta(carta);
+            if (quantidadeNoDeck < 4) {
+                deck.adicionarCartaNoDeck(carta);
+            }
+            if (deck.isCompleto()) {
+                break;
+            }
+        }
+
+        // Adicionar o deck à coleção
+        decks.add(deck);
+        return deck;
+    }
 }
