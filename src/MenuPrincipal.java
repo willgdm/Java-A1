@@ -59,7 +59,6 @@ public class MenuPrincipal {
         } else {
             System.out.println("Nenhuma carta encontrada com o filtro especificado.");
         }
- feature/criar-continuar-deck
     }
 
     private static void criarContinuarDeck() {
@@ -125,7 +124,6 @@ public class MenuPrincipal {
         if (novoDeck) {
             colecao.adicionarDeck(deck);
         }
- main
     }
 
     private static void criarDeckAleatorio() {
@@ -144,4 +142,28 @@ public class MenuPrincipal {
         }
         System.out.println(deck);
     }
+
+    private static void simularBatalha() {
+        System.out.println("=== Simulação de Batalha ===");
+        System.out.print("Nome do Deck 1: ");
+        String nomeDeck1 = Console.lerString();
+        Deck deck1 = colecao.buscarDeckPorNome(nomeDeck1);
+
+        System.out.print("Nome do Deck 2: ");
+        String nomeDeck2 = Console.lerString();
+        Deck deck2 = colecao.buscarDeckPorNome(nomeDeck2);
+
+        if (deck1 != null && deck2 != null) {
+            String resultado = Batalha.simular(deck1, deck2);
+            System.out.println("Resultado da batalha: " + resultado);
+        } else {
+            System.out.println("Um ou ambos os decks não foram encontrados.");
+        }
+    }
+
+    private static void exibirEstatisticas() {
+        System.out.println("=== Estatísticas e Relatórios ===");
+        colecao.exibirEstatisticas();
+    }
+
 }
