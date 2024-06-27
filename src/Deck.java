@@ -61,4 +61,12 @@ public class Deck implements DadosPersistentes, Serializable {
             out.writeObject(this);
         }
     }
+    @Override
+    public void carregar(String filePath) throws IOException, ClassNotFoundException {
+        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(filePath))) {
+            Deck deckCarregado = (Deck) in.readObject();
+            this.nome = deckCarregado.nome;
+            this.cartas = deckCarregado.cartas;
+        }
+    }
 }

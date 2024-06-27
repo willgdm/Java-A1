@@ -6,7 +6,12 @@ public class MenuPrincipal {
     private static Colecao colecao;
     public static void main(String[] args) {
         colecao = new Colecao();
-        
+        try {
+            colecao.carregar("colecao.json");
+            System.out.println("Coleção carregada com sucesso.");
+        } catch (IOException | ClassNotFoundException e) {
+            System.out.println("Não foi possível carregar a coleção anterior: " + e.getMessage());
+        }
         
 
     }

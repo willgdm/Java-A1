@@ -76,4 +76,21 @@ public class Carta implements DadosPersistentes, Serializable {
             oos.writeObject(this);
         }
     }
+    
+    @Override
+    public void carregar(String filePath) throws IOException {
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filePath))) {
+            Carta carta = (Carta) ois.readObject();
+            this.titulo = carta.titulo;
+            this.descricao = carta.descricao;
+            this.tipo = carta.tipo;
+            this.raridade = carta.raridade;
+            this.colecao = carta.colecao;
+            this.poder = carta.poder;
+            this.vida = carta.vida;
+            this.custoDeMana = carta.custoDeMana;
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
 }
