@@ -59,6 +59,7 @@ public class MenuPrincipal {
         } else {
             System.out.println("Nenhuma carta encontrada com o filtro especificado.");
         }
+ feature/criar-continuar-deck
     }
 
     private static void criarContinuarDeck() {
@@ -124,6 +125,7 @@ public class MenuPrincipal {
         if (novoDeck) {
             colecao.adicionarDeck(deck);
         }
+ main
     }
 
     private static void criarDeckAleatorio() {
