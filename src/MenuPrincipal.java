@@ -12,8 +12,59 @@ public class MenuPrincipal {
         } catch (IOException | ClassNotFoundException e) {
             System.out.println("Não foi possível carregar a coleção anterior: " + e.getMessage());
         }
-        
+        int opcao;
+        do {
+            exibirMenu();
+            System.out.print("Escolha uma opção: ");
+            opcao = Console.lerInt();
 
+            try {
+                switch (opcao) {
+                    case 1:
+                        cadastrarCarta();
+                        break;
+                    case 2:
+                        organizarCartas();
+                        break;
+                    case 3:
+                        criarContinuarDeck();
+                        break;
+                    case 4:
+                        criarDeckAleatorio();
+                        break;
+                    case 5:
+                        simularBatalha();
+                        break;
+                    case 6:
+                        exibirEstatisticas();
+                        break;
+                    case 7:
+                        salvarDados();
+                        break;
+                    case 0:
+                        System.out.println("Saindo do programa...");
+                        break;
+                    default:
+                        System.out.println("Opção inválida. Tente novamente.");
+                }
+            } catch (Exception e) {
+                System.out.println("Ocorreu um erro: " + e.getMessage());
+            }
+
+            System.out.println();
+        } while (opcao != 0);
+    }
+    private static void exibirMenu() {
+        System.out.println("=== Menu Principal ===");
+        System.out.println("1. Cadastrar Carta");
+        System.out.println("2. Organizar Cartas");
+        System.out.println("3. Criar/Continuar Deck");
+        System.out.println("4. Criar Deck Aleatório");
+        System.out.println("5. Simular Batalha");
+        System.out.println("6. Exibir Estatísticas e Relatórios");
+        System.out.println("7. Salvar Dados");
+        System.out.println("0. Sair");
+    }
     }
 
     private static void cadastrarCarta() {
